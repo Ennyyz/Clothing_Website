@@ -1,0 +1,62 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<DOAN_14.Models.Product>
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<style>
+    .buy {
+        text-decoration: none;
+        background-color: rgb(66, 65, 65);
+        color: white;
+        padding: 6px 20px;
+        text-align: center;
+        transition-property: width;
+        transition-duration: 3s;
+    }
+        .buy:hover {
+            color: white;
+            background-color: #E14D2A;
+            border-radius: 20px;
+        }
+</style>
+<main>
+    <img src="~/Content/images/TRANGCHU.png" alt="" width="100%">
+    <div class="product">
+        <h3 class="main-product-title"><b>SẢN PHẨM BÁN CHẠY</b></h3>
+    <br />
+        @using (Html.BeginForm("ProductList", "Products", FormMethod.Get)) { }
+        <div class="product-item">
+            <table>
+                @foreach (var pro in Model)
+                {
+                    <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="main-table" width="100%">
+                            <img class="product-img" src="@pro.ImagePro" alt="">
+                            <a class="lienket " href="/Products/DetailsCustomer/@pro.ProductID">@Html.DisplayFor(model => pro.NamePro)</a><br>
+                            <b>@Html.DisplayFor(model => pro.Price)</b>
+                            <br><br>
+                            <p style="text-align: center; ">
+                                <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="buy"> Mua </a>
+                            </p>
+                            <br /><br />
+                        </div>
+                    </div>
+                }
+            </table>
+        </div>
+    <br>
+        <div class="main-product-title" style="width: 100%;">
+            <a class="main-product-more" style=" " href="~/Products/AllProductList">XEM THÊM</a>
+        </div>
+    </div><br><br>
+</main>
+<br>
+<br>
+
+
+
+
+
+

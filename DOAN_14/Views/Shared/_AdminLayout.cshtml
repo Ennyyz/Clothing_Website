@@ -1,0 +1,59 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/css/ADMINLAYOUT.css" type="text/css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/92e7113135.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar-fixed-top" >
+        <header class="header">
+            <table class="header-table" style=" text-align: center">
+                <tr class="header1">
+                    <td style="width:85%"></td>
+                    <td colspan="2"></td>
+                    <td>
+                        <ul>
+                            <li style="">
+                                @if (Session["NameUser"] == null)
+                                {
+                                <span style="color: #E5D9B6 ">Xin chào&emsp;&emsp;&emsp;&emsp;</span>
+                                }
+                                else
+                                {
+                                    <span style="color: #E14D2A;"><text style="color:black;">Xin chào Admin</text> @Session["NameUser"]</span>
+                                }
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <table class="header-table" style="text-align:center;">
+                <tr class="header2">
+                    <td style="width:30%"><a class="shop-name" href="~/Products/ProductList">FOURTEEN</a></td>
+                    <td><a class="header2-product" href="~/LoginUser/Index/?chon=1">SẢN PHẨM</a></td>
+                    <td><a class="header2-product" href="~/LoginUser/Index/?chon=2">LOẠI SẢN PHẨM</a></td>
+                    <td><a class="header2-product" href="~/LoginUser/Index/?chon=3">KHÁCH HÀNG</a></td>
+                    <td><a class="header2-product" href="~/LoginUser/Index/?chon=4">ĐƠN HÀNG</a></td>
+                    <td><a class="header2-product" href="~/LoginUser/Index/?chon=5">PHÂN QUYỀN</a></td>
+                    <td style="width:20%"></td>
+                </tr>
+            </table>
+        </header>
+    </div>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <footer style=" height: 40px; text-align: center; padding: 10px; color:black; clear:both" ;>
+        <b style="color: black;">
+            &copy; @DateTime.Now.Year - Admin Group 14
+        </b>
+    </footer>
+</body>
+</html>

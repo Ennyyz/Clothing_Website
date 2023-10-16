@@ -1,0 +1,96 @@
+﻿@model IEnumerable<DOAN_14.Models.Product>
+
+@{
+    ViewBag.Title = "AllProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .search-price {
+        text-decoration: none;
+        background-color: white;
+        color: black;
+        padding: 6px 20px;
+        text-align: center;
+        transition-property: width;
+        transition-duration: 3s;
+    }
+        .search-price:hover {
+/*            color: black;
+            background-color: white;*/
+            border-radius: 20px;
+        }
+    .buy {
+        text-decoration: none;
+        background-color: rgb(66, 65, 65);
+        color: white;
+        padding: 6px 20px;
+        text-align: center;
+        transition-property: width;
+        transition-duration: 3s;
+    }
+
+        .buy:hover {
+            color: white;
+            background-color: #E14D2A;
+            border-radius: 20px;
+        }
+    .menu-left-product {
+        position: absolute;
+        /*font-weight:bold;*/
+    }
+    .number{
+        width:120px;
+    }
+</style>
+<br>
+<div class="product">
+    <h3 class="main-product-title"><b>TẤT CẢ SẢN PHẨM</b></h3><br />
+    <div class="product-item">
+        <table>
+            @using (Html.BeginForm("AllProductList", "Products", FormMethod.Get))
+            {
+                <td class="menu-left-product" style="">
+                    <a href="~/Products/ProductList">&ensp; SẢN PHẨM BÁN CHẠY </a>
+                    <br>
+                    <hr />
+                    @*<br>*@
+                    <a href="~/Products/AllProductList">&ensp; TẤT CẢ SẢN PHẨM </a>
+                    <br>
+                    <hr />
+                    <br>
+                    <p>&ensp; Đơn giá từ :</p>
+                    &ensp;&ensp;<input class="number" type="number" name="min" />
+                    <br>
+                    <br>
+                    <p>&ensp; Đến :</p>
+                    &ensp;&ensp;<input class="number" type="number" name="max" /><br><br>
+                    &ensp;&ensp;&ensp;&ensp;<input type="submit" value="Tìm giá" class="search-price"/>
+                </td>
+            }
+            <td style="width:87%">
+                <div>
+                    @foreach (var pro in Model)
+                    {
+                        <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="main-table" width="100%">
+                                <img class="product-img" src="@pro.ImagePro" alt="">
+                                <a class="lienket " href="/Products/DetailsCustomer/@pro.ProductID">@Html.DisplayFor(model => pro.NamePro)</a><br>
+                                <b>@Html.DisplayFor(model => pro.Price)</b>
+                                <br><br>
+                                <p style="text-align: center;">
+                                    <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="buy"> Mua </a>
+                                </p>
+                                <br /><br />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </td>
+        </table>
+    </div><br>
+</div>
+<br>
+<br>
+
+
+

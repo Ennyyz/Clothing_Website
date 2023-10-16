@@ -1,0 +1,71 @@
+﻿@model DOAN_14.Models.Customer
+
+@{
+    ViewBag.Title = "LoginCus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .form-login {
+        text-align: center;
+        background-color: #E5D9B6;
+        border-radius: 20px;
+        /*margin: 30px 50px;*/
+        padding: 30px 50px;
+    }
+
+    .name_login {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .button_login {
+        background-color: white;
+        width: 100px;
+        height: 30px;
+        border: 2px solid black;
+        border-radius: 20px;
+    }
+
+        .button_login:hover {
+            transform: scale(1.1);
+        }
+</style>
+<br>
+<br>
+<br>
+@using (Html.BeginForm("LoginAcountCus", "Customers"))
+{
+    <table align="center">
+        <td>
+            <div class="form-login">
+                @Html.AntiForgeryToken()
+                <div><h3 class="name_login">ĐĂNG NHẬP KHÁCH HÀNG</h3></div><br />
+                <div style="padding: 5px">
+                    @*@Html.LabelFor(model => model.UserName)*@
+                    <b>Tên tài khoản&emsp;</b>
+                    @Html.TextBoxFor(model => model.UserName, new { style = "filed-validation-error" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+                <div style="padding: 5px">
+                    <b>Mật khẩu &emsp;&emsp;&ensp;&#160;</b>
+                    @*@Html.LabelFor(model => model.Password)*@
+                    @Html.EditorFor(model => model.Password, new { style = "filed-validation-error" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                    @if (ViewBag.ErrorInfo == null)
+                    {
+                        <p>@ViewBag.ErrorInfo</p>
+                    }
+                </div><br />
+                <br /><br />
+                <input type="submit" value="Đăng nhập" class="button_login" />
+                <br /><br />
+            </div>
+        </td>
+    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+}
+

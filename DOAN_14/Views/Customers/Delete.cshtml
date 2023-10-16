@@ -1,0 +1,50 @@
+﻿@model DOAN_14.Models.Customer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>XÓA THÔNG TIN KHÁCH HÀNG</h2>
+
+<h3>Bạn có chắc là xóa THÔNG TIN KHÁCH HÀNG này không?</h3>
+<div>
+    @*<h4>Customer</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCus)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneCus)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailCus)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" style="background: rgb(128, 0, 0); color: white" /> |
+            @Html.ActionLink("Quay lại DANH MỤC KHÁCH HÀNG", "Index")
+        </div>
+    }
+</div>

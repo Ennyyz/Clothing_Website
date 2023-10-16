@@ -1,0 +1,61 @@
+﻿@model DOAN_14.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CHI TIẾT</h2>
+
+<div>
+
+
+    @*<h4>Product</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePro)
+        </dd>
+        <dt>
+            Mô tả :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DecriptionPro)
+        </dd>
+
+        <dt>
+            Đơn giá :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            Hình :
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.ImagePro)*@
+            <img src="@Model.ImagePro" width="200" height="200" />
+        </dd>
+
+        <dt>
+            Loại sản phẩm :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category1.NameCate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Quay lại DANH MỤC SẢN PHẨM", "Index")
+</p>

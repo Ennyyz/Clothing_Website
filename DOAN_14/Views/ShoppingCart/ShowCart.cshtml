@@ -1,0 +1,110 @@
+﻿@model DOAN_14.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table style="width: 100%;">
+    <thead style="font-size: large; top: 75px;">
+        <tr>
+            <th colspan="2" style="font-size: 50px; margin-top:20px; text-align: left">Giỏ hàng </th>
+
+        </tr>
+    </thead>
+</table>
+
+<a href="@Url.Action("ProductList", "Products")"> Tiếp tục Mua hàng</a>
+@if (Model != null)
+{
+    <table style="width:100%;">
+        <thead style="font-size:large; top:75px;">
+            <tr style=" border-bottom: 1px solid black;">
+                <th style="text-align:center">Tên Sản phẩm</th>
+                <th style="text-align:center">Hình</th>
+                <th style="text-align:center">Giá</th>
+                <th style="text-align:center">Số lượng</th>
+                <th style="text-align:center">Thành tiền</th>
+
+                <br />
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                decimal total = item._quantity * (decimal)item._product.Price.Value;
+                <tr style="text-align: center; border-bottom: 1px solid #ddd;">
+                    <td width="400">@Html.DisplayFor(model => item._product.NamePro)</td>
+                    <td><img src="@item._product.ImagePro" width="100" height="110" /></td>
+                    <td width="100" align="center"> @Html.DisplayFor(model => item._product.Price)</td>
+                    <td align="center">
+                        @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
+                        {
+                            <input type="hidden" value="@item._product.ProductID" name="idPro" />
+                            <input type="number" value="@item._quantity" name="carQuantity" style="text-align:right" />
+                            <input type="submit" value="Cập nhật" />
+                        }
+                    </td>
+                    <td width="100" align="center">@total.ToString("#,##0").Replace(',', '.')</td>
+                    <td>
+                        <a href="~/ShoppingCart/RemoveCart/@item._product.ProductID" class="btn-danger"><a href="~/ShoppingCart/RemoveCart/@item._product.ProductID">
+                            <img src="//theme.hstatic.net/200000195489/1000808129/14/ic_close.png?v=109" style="width:18px"></a></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+
+            <tr>
+                <td colspan="3">
+                    <br />
+                    <strong> THÔNG TIN ĐƠN HÀNG</strong>
+                    <h5>_____________________________________________________</h5>
+                    @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+                    {
+                        <table style="border-collapse: separate; border-spacing: 5px;">
+                            <tr>
+                                <td></td>
+                                <td><input type="hidden" name="CodeCustomer" value="@Session["IDCus"]" required /></td>
+
+                            </tr>
+                            <tr>
+                                <td style="padding: 5px;"><label for="name">Khách hàng:</label></td>
+                                <td><input type="text" name="Name" id="name" value="@Session["NameCus"]" placeholder=Name autofocus="" required /></td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 5px;"><label for="phone-number">Số điện thoại: </label></td>
+                                <td><input type="text" name="PhoneCustomer" id="phone-number" value="@Session["PhoneCus"]" placeholder=Phone autofocus="" required /></td>
+                            </tr>
+
+                            <tr>
+
+                                <td style="padding: 5px;"><label for="address"> Địa chỉ giao hàng:</label> </td>
+                                <td> <input type="text" name="AddressDeliverry" id="address" placeholder=Address autofocus="" required /></td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="submit" value="Thanh toán" class="btn btn-danger" />
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </td>
+                <td colspan="3" style="text-align:left;  font-size:x-large; color: crimson; font-family:'Courier New'; font-weight:bold; ">
+                    Tổng số lượng : @Model.Total_quantity().ToString("#,##0")<br />
+                    Tổng tiền : @Model.Total_money().ToString("#,##0").Replace(',', '.') Đồng <br />
+
+                </td>
+            </tr>
+
+        </tfoot>
+    </table>
+}
+else
+{
+    <h4>Giỏ hàng rỗng ! Xin mời tiếp tục mua hàng</h4>
+}

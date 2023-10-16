@@ -1,0 +1,76 @@
+﻿@model DOAN_14.Models.AdminUser
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+
+    .form-login {
+        text-align: center;
+        background-color: white;
+        border-radius: 20px;
+        /*margin: 30px 50px;*/
+        padding: 30px 50px;
+        border: 2px solid black;
+    }
+
+    .name_login {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .button_login {
+        background-color: white;
+        width: 100px;
+        height: 30px;
+        border: 2px solid black;
+        border-radius: 20px;
+    }
+
+        .button_login:hover {
+            transform: scale(1.1);
+        }
+</style>
+<br>
+<br>
+<br>
+@using (Html.BeginForm("LoginAcount", "LoginUser"))
+{
+<table align="center">
+    <input type="hidden" value="@Session["chon"]" name="chon" />
+    <td>
+        <div class="form-login">
+            @Html.AntiForgeryToken()
+            <div><h3 class="name_login">ĐĂNG NHẬP ADMIN</h3></div><br />
+            <div style="padding: 5px">
+                @*@Html.LabelFor(model => model.UserName)*@
+                <b>Tên tài khoản&emsp;</b>
+                @Html.TextBoxFor(model => model.NameUser, new { style = "filed-validationerror" })
+                @Html.ValidationMessageFor(model => model.NameUser)
+            </div>
+            <div style="padding: 5px">
+                <b>Mật khẩu &emsp;&emsp;&ensp;&#160;</b>
+                @*@Html.LabelFor(model => model.Password)*@
+                @Html.EditorFor(model => model.PasswordUser)
+                @Html.ValidationMessageFor(model => model.PasswordUser)
+                @if (ViewBag.ErrorInfo == null)
+                {
+                    <p>@ViewBag.ErrorInfo</p>
+                }
+            </div><br />
+            <br /><br />
+            <input type="submit" value="Đăng nhập" class="button_login" />
+            <br /><br />
+        </div>
+    </td>
+</table>
+    <br />
+    <br />
+    <br />
+    <br />
+}

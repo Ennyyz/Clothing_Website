@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DOAN_14.Models.Category>
+
+<style>
+    .header2-product {
+        display: block;
+        padding: 8px 15px;
+        text-decoration: none;
+        color: black;
+        margin: 0;
+    }
+
+    .header2-product:hover {
+        font-weight: bold;
+        border: 0.5px solid rgb(228, 228, 228);
+    }
+</style>
+@*<h3 style="color:darkred; text-align:center;">Danh mục Loại SP</h3>*@
+<ul  class="" style="display:block">
+    @{
+        foreach (var item in Model)
+        {
+            <li class="header2-product">
+                @Html.ActionLink(item.NameCate, "ProductList", "Products", new { category = item.IDCate }, "")
+            </li>
+        }
+    }
+</ul>

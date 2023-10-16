@@ -1,0 +1,70 @@
+﻿@model DOAN_14.Models.Product
+
+@{
+    ViewBag.Title = "DetailsCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table-product {
+        width: 60%;
+        
+    }
+    .table-info-product {
+        font-family: 'helveticaneue', sans-serif;
+    }
+    .name-product{
+        width:40%;
+        font-size:25px;
+    }
+    .price-product {
+        /*color:orangered;*/
+        font-size: 20px;
+    }
+    .buy {
+        text-decoration: none;
+        background-color: rgb(66, 65, 65);
+        color: white;
+        padding: 6px 20px;
+        text-align: center;
+        transition-property: width;
+        transition-duration: 3s;
+    }
+
+        .buy:hover {
+            color: white;
+            background-color: #E14D2A;
+            border-radius: 20px;
+        }
+</style>
+
+<div>
+    <br><br><br>
+    <table class="table-product" align="center">
+        <td>
+            <img src="@Model.ImagePro" width="400" height="400" />
+        </td>
+        <td class="table-info-product">
+            <b class="name-product">@Html.DisplayFor(model => model.NamePro)</b>
+            <br>
+            <br>
+            <b class="price-product">@Html.DisplayFor(model => model.Price) đ</b>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p><b>Mô tả : </b>@Html.DisplayFor(model => model.DecriptionPro)</p>
+            <p><b>Loại sản phẩm : </b>@Html.DisplayFor(model => model.Category1.NameCate)</p>
+            <br>
+            <p style=" ">
+                <a href="/ShoppingCart/AddToCart/@Model.ProductID" class="buy"> Mua </a>
+            </p>
+        </td>
+    </table>
+</div>
+<br>
+<br>
+<p>
+    @*@Html.ActionLink("Cập nhật", "Edit", new { id = Model.ProductID }) |*@
+    &emsp;@Html.ActionLink(" Quay lại DANH SÁCH SẢN PHẨM", "ProductList")
+</p>

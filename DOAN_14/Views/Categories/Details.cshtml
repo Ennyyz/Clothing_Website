@@ -1,0 +1,43 @@
+﻿@model DOAN_14.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CHI TIẾT</h2>
+
+<div>
+    @*<h4>Category</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            Mã loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDCate)
+        </dd>
+
+        <dt>
+            Tên loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.IDCate }) |
+    @Html.ActionLink("Quay lại LOẠI SP", "Index")
+</p>

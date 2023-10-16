@@ -1,0 +1,115 @@
+﻿@model DOAN_14.Models.Customer
+
+@{
+    ViewBag.Title = "CreateCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-register {
+        text-align: center;
+        background-color: #E5D9B6;
+        border-radius: 20px;
+        /*margin: 30px 50px;*/
+        padding: 30px 50px;
+    }
+
+    .name_register {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .button_register {
+        background-color: white;
+        width: 100px;
+        height: 30px;
+        border: 2px solid black;
+        border-radius: 20px;
+    }
+
+        .button_register:hover {
+            transform: scale(1.1);
+        }
+    /*    .col-md-10{
+        width: 40%;
+    }*/
+</style>
+<br>
+<br>
+<br>
+
+@using (Html.BeginForm())
+{
+    <table align="center" style="width:70%">
+        <td>
+            <div class="form-register">
+                @Html.AntiForgeryToken()
+                <div><h3 class="name_register">ĐĂNG KÝ KHÁCH HÀNG</h3></div><br />
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="control-label col-md-2">
+                            <b>Tên khách hàng</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NameCus, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NameCus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-md-2">
+                            <b>Số điện thoại</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PhoneCus, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhoneCus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-md-2">
+                            <b>Email</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.EmailCus, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EmailCus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-2">
+                            <b>UserName</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-2">
+                            <b>Password</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" value="ĐĂNG KÝ" class="button_register" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

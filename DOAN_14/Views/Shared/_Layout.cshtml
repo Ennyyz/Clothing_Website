@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/css/LAYOUT.css" type="text/css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/92e7113135.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar-fixed-top">
+        <header class="header">
+            <table class="header-table" style="background-color: white; text-align: center;">
+                <tr class="header1">
+                    <td style="width:57%"></td>
+                    <td colspan="2"></td>
+                    <td><a class="lienket" href="#">Tiếng Việt ▾</a></td>
+                    <td><a class="lienket" href="~/Customers/CreateCustomer">Đăng Ký</a></td>
+                    <td><a class="lienket" href="~/Customers/LoginCus">Đăng Nhập</a></td>
+                    <td><a class="lienket" href="@Url.Action("LogOutUser","LoginUser")">Đăng Xuất</a></td>
+                    <td>
+                        <ul>
+                            <li style="text-align:center">
+                                @if (Session["NameCus"] == null)
+                                {
+                                <span style="color:white">Xin chào&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                }
+                                else
+                                {
+                                    <span style="color: #E14D2A; background-color: #E5D9B6; padding: 2px 5px; border-radius: 20px; "><text style="color:black;">Xin chào</text>
+                                @Session["NameCus"]</span>
+                                }
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <table class="header-table" style="text-align:center">
+                <tr class="header2">
+                    <td style="width:30%"><a class="shop-name" href="~/Products/ProductList">FOURTEEN</a></td>
+                    <td class="header2-info">
+                        <ul>
+                            <li>
+                                <a class="header2-product-title" style="text-align: center;" href="#">&emsp;&ensp;SẢN PHẨM ▾</a>
+                                <ul class="dropdown">
+                                    @{ Html.RenderAction("CategoryPartial", "Categories");}
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td><a class="lienket" href="~/Home/Contact">LIÊN HỆ</a></td>
+                    <td><a class="lienket" style="text-align: center" href="~/Home/Index">GIỚI THIỆU</a></td>
+                    <td class="header2-info">
+                        <ul>
+                            <li>
+                                <a class="header2-product-title" style="text-align: center;" href="#">&emsp;&emsp;QUẢN LÝ ▾&emsp;&emsp;</a>
+                                <ul class="dropdown">
+                                    <li><a class="header2-product" href="~/LoginUser/Index/?chon=1">SẢN PHẨM</a></li>
+                                    <li><a class="header2-product" href="~/LoginUser/Index/?chon=2">LOẠI SẢN PHẨM</a></li>
+                                    <li><a class="header2-product" href="~/LoginUser/Index/?chon=3">KHÁCH HÀNG</a></li>
+                                    <li><a class="header2-product" href="~/LoginUser/Index/?chon=4">ĐƠN HÀNG</a></li>
+                                    <li><a class="header2-product" href="~/LoginUser/Index/?chon=5">PHÂN QUYỀN</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td colspan="2" class="header-search">
+                        @using (Html.BeginForm("ProductList", "Products", FormMethod.Get))
+                        {
+                            <i class="fa-solid fa-magnifying-glass" style="background-color: white;"></i>
+                            <input class="search" name="SearchString" type="search" placeholder="Tìm kiếm">
+                        }
+                    </td>
+                    <td>
+                        <a class="lienket" style="text-align:center; background-color:white" href="~/ShoppingCart/ShowCart"><i class="fa-solid fa-cart-shopping"></i></a>
+                        @Html.Action("BagCart", "ShoppingCart")
+                    </td>
+                </tr>
+            </table>
+        </header>
+    </div>
+    </div>
+    @RenderBody()
+    <br>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <footer class="main-footer mainfooter-toolbar " style="background-color: #808080;color:white">
+        <div class="main-footer--bottom">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg">
+                        <div class="footer-col footer-block">
+                            <h4 class="footer-title">	Giới thiệu</h4>
+                            <div class="footer-content">
+                                <p>
+                                    FOURTEEN ESSENCE
+                                </p>
+                                <div class="logo-footer">
+                                    <a href="">
+                                        <img src="https://imjustcreative.com/wp-content/uploads/2014/04/Fourteen-Logo-Design-by-WeAreMash.jpg" style="width:150px;">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg">
+                        <div class="footer-col footer-block">
+                            <h4 class="footer-title">
+                                Thông tin liên hệ
+                            </h4>
+                            <div class="footer-content toggle-footer" style="width: 500px; text-align:left;">
+                                <li>
+                                    <span>Địa chỉ:</span>                   <br />
+                                    <strong>
+                                        CN1: 828 Sư Vạn Hạnh, P.12, Q.10        <br />
+                                        CN2: M4-M7-M9 Thất Sơn, P.15, Q.10      <br />
+                                        CN3: 298-304 Cao Thắng, P.12, Q.10      <br />
+                                        CN4: 357 Lê Hồng Phong, P.2, Q.10       <br />
+                                        CN5: 32 Trường Sơn, P.2, Q.Tân Bình     <br />
+                                        CN6: Quốc lộ 22, x.Tân Xuân, h.Hóc Môn  <br />
+                                    </strong>
+                                </li>
+                                <li>
+                                    <span>Điện thoại:</span> <strong> 0126497251</strong>
+                                </li>
+                                <li>
+                                    <span>Mail:</span> <strong> fourteenclo@gmail.com</strong>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg">
+                        <div class="footer-col footer-block">
+                            <h4 style="margin-left:120px">
+                                FANPAGE
+                            </h4>
+                            <div class="footer-content">
+                                <!-- Facebook widget -->
+                                <div class="footer-static-content">
+                                    <div class="fb-page" data-href="https://www.facebook.com/huflit.edu.vn" data-height="300" data-small-header="false" data-adapt-container-width="true" 
+                                         data-hide-cover="false" data-show-facepile="true" data-show-posts="false" style="margin-left:120px;">	</div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <!-- #Facebook widget -->
+                                <script>
+                                    setTimeout(function () {
+                                        (function (d, s, id) {
+                                            var js, fjs = d.getElementsByTagName(s)[0];
+                                            if (d.getElementById(id)) return;
+                                            js = d.createElement(s); js.id = id;
+                                            js.src = "//connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.0";
+                                            fjs.parentNode.insertBefore(js, fjs);
+                                        }(document, 'script', 'facebook-jssdk'));
+                                    }, 5000);
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-footer--copyright">
+            <div class="container">
+                <div class="main-footer--border" style="text-align:center">
+                    <p>Copyright © 2022 <a href="https://huflit.edu.vn/"> FOURTEEN</a>. <a target='_blank' href='https://huflit.edu.vn/'>Powered by 14</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

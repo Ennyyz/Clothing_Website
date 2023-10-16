@@ -1,0 +1,66 @@
+﻿@model DOAN_14.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>XÓA SẢN PHẨM</h2>
+
+<h3>Bạn có chắc là xóa SẢN PHẨM này không?</h3>
+<div>
+    @*<h4>Product</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePro)
+        </dd>
+
+        <dt>
+            Mô tả :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DecriptionPro)
+        </dd>
+
+        <dt>
+            Đơn giá :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            Hình :
+        </dt>
+
+        <dd>
+            <img src="@Model.ImagePro" width="200" height="200" />
+        </dd>
+
+        <dt>
+            Loại sản phẩm :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category1.NameCate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" style="background: rgb(128, 0, 0); color: white" /> |
+            @Html.ActionLink("Quay lại DANH MỤC SẢN PHẨM", "Index")
+        </div>
+    }
+</div>

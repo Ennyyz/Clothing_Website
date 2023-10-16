@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.about {
+    width: 100%;
+    padding: 78px 0px;
+    background-color: #191919;
+}
+
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ddd;
+}
+
+.container {
+    width: 80%;
+    display: block;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.content-section {
+    float: left;
+    width: 55%;
+}
+
+.image-section {
+    float: right;
+    width: 40%;
+}
+
+.image-section img {
+    width: 80%;
+    height: auto;
+}
+
+.content-section .title {
+    text-transform: uppercase;
+    font-size: 28px;
+}
+
+.content-section .content h2 {
+    margin-top: 20px;
+    color: #5d5d5d;
+    font-size: 21px;
+}
+
+.content-section .content p {
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.content-section .content .button a {
+    background-color: #3d3d3d;
+    padding: 3px 30px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 1.5px;
+}
+
+.content-section .content .button a:hover {
+    background-color: #a52a2a;
+    color: #fff;
+}
+
+.about img {
+    height: auto;
+    width: 420px;
+}
+
+.about-text {
+    width: 550px;
+
+}
+
+.main {
+    width: 1130px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+span {
+    color: #f9004d;
+}
+
+.about-text p {
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.main .about-text .button a {
+    background-color: #3d3d3d;
+    padding: 3px 30px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 1.5px;
+}
+</style>
+<br />
+<br />
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="content-section">
+                <div class="title">
+                    <h1>Giới Thiệu</h1>
+                </div>
+                <div class="content">
+                    <h2>Fourteenlà ai?</h2>
+                    <p>
+                        Là mấy đứa điên thích lang thang đây đó,
+                        tìm hiểu về lịch sử - văn
+                        hoá dân tộc, thích
+                        nghĩ
+                        lớn, thích mơ lớn, thích làm những thứ chưa ai làm, thích được
+                        tự đày ải mình với những tiêu
+                        chuẩn khắt khe và điên rồ do chính mình đặt ra.
+                    </p>
+                    <div class="button">
+                        <a href="">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="image-section">
+                <img src="https://i.pinimg.com/474x/87/ca/d0/87cad0a80b154a8b266b33a5d6f7b8f0.jpg">
+            </div>
+        </div>
+        <div class="main">
+            <img src="https://i.pinimg.com/474x/f0/f5/b0/f0f5b0f0d9e655bf30c7543e08a9b752.jpg">
+            <div class="about-text">
+                <p>
+                    Fourteen luôn thích đem những thứ mà mọi người
+                    nghĩ là chả liên quan gì,
+                    kết hợp lại với nhau.
+                    Ví
+                    như, đem lịch sử - văn hoá dân tộc vào thời trang đường phố, hay
+                    chất lượng của high fashion
+                    vào
+                    những sản phẩm giá Việt, hoặc kính 3D trong rạp phim và nước hoa
+                    trong tiệm lên quần áo. Sắp
+                    tới
+                    sẽ còn nhiều sự kết hợp táo bạo và dữ dội hơn nữa.
+                </p>
+                <div class="button">
+                    <a href="">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
